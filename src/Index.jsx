@@ -23,8 +23,6 @@ function RandomKanji() {
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    console.log("CLick!");
-
     setLoading(true);
 
     try {
@@ -45,12 +43,12 @@ function RandomKanji() {
       <button
         onClick={handleClick}
         className={`${
-          loading ? "opacity-50" : "opacity-100"
-        } group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-colors transition-scale hover:border-opacity-70`}
+          loading ? "opacity-50 scale-95" : "opacity-100"
+        } group rounded-lg border border-white border-opacity-40 bg-transparent backdrop-blur-lg transition-colors transition-scale can-hover:hover:border-opacity-70`}
         disabled={loading}
       >
         <img
-          className="size-10 opacity-40 p-1.5 transition-opacity group-hover:opacity-70"
+          className="size-10 opacity-40 p-1.5 transition-opacity can-hover:group-hover:opacity-70"
           src="/dice.svg"
           alt=""
         />

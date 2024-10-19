@@ -28,3 +28,4 @@ src/CHarsSvgs
 # Data
 src/kanji_data
 src/components/KanjiBackground.jsx
+src/components/buttons
