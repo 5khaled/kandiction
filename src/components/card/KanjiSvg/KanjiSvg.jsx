@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-// import VALID_SVGS from "../../kanji_data/valid_svgs.json";
-
 import MainSVG from "./MainSVG.jsx";
 import PlaceHolderSVG from "./PlaceHolderSVG.jsx";
 import Options from "./Options.jsx";
@@ -11,14 +9,11 @@ import Loader from "../../../assets/Loader.jsx";
 
 export default function KanjiSvg({ KANJI }) {
   const [isLoading, setIsLoading] = useState(true);
-
-  // const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const SvgHolder = useRef();
 
   const [svgContent, setSvgContent] = useState(null);
-
-  // const VALID_KANJIS = VALID_SVGS.kanjis.split("");
   // const SVG_SOURCE = VALID_KANJIS.includes(KANJI)
   //   ? `https://kanji.vwh.sh/svg/${KANJI.codePointAt(0).toString(16).padStart(5, "0")}.svg`
   //   : null;
@@ -39,6 +34,7 @@ export default function KanjiSvg({ KANJI }) {
           setSvgContent(svgOnly);
         } else {
           console.error("SVG content not found");
+          setIsError(true);
         }
       } catch (error) {
         console.error("Error fetching SVG:", error);
@@ -54,7 +50,7 @@ export default function KanjiSvg({ KANJI }) {
 
   const playAnimation = useCallback(() => {
     setIsAnimating(true);
-    const SVG = SvgHolder.current.querySelector("svg");
+    const SVG = SvgHolder.current?.querySelector("svg");
     if (SVG) {
       const paths = SVG.querySelectorAll("path");
       const texts = SVG.querySelectorAll("text");
@@ -103,7 +99,8 @@ export default function KanjiSvg({ KANJI }) {
   return (
     <div className="group relative p-3 size-52 aspect-square max-sm:size-40 max-2xs:size-full shrink-0 rounded border-2 bg-black bg-opacity-35 flex items-center justify-center">
       {isLoading && <Loader className="" />}
-      {!isLoading && (
+      {isError && !isLoading && <NoSVG KANJI={KANJI} />}
+      {!isLoading && !isError && (
         <>
           <Options
             playAnimation={playAnimation}
@@ -124,16 +121,24 @@ export default function KanjiSvg({ KANJI }) {
           </figure>
         </>
       )}
-      {/* {isError && !isLoading && (
-        <figure className="size-full flex flex-col justify-evenly items-center">
-          <span className="text-8xl leading-tight text-white">{KANJI}</span>
-          <span className="text-white text-opacity-50">SVG Not Available!</span>
-        </figure>
-      )} */}
     </div>
   );
 }
 KanjiSvg.propTypes = {
   svgSource: PropTypes.string,
+  KANJI: PropTypes.string,
+};
+
+function NoSVG({ KANJI }) {
+  return (
+    <figure className="[container-type:inline-size] size-full flex flex-col justify-around items-center">
+      <span className="text-[40cqi] leading-none text-white">{KANJI}</span>
+      <span className="text-white text-opacity-50 text-[8cqi]">
+        No SVG available!
+      </span>
+    </figure>
+  );
+}
+NoSVG.propTypes = {
   KANJI: PropTypes.string,
 };
