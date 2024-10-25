@@ -5,7 +5,7 @@ import MainSVG from "./MainSVG.jsx";
 import PlaceHolderSVG from "./PlaceHolderSVG.jsx";
 import Options from "./Options.jsx";
 
-import Loader from "../../../assets/Loader.jsx";
+import Loader from "../../../assets/QuantumLoader.jsx";
 
 export default function KanjiSvg({ KANJI }) {
   const [isLoading, setIsLoading] = useState(true);

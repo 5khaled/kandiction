@@ -1,4 +1,4 @@
-import "./Loader.css";
+import "./QuantumLoader.css";
 
 function Loader() {
   return (

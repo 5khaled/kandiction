@@ -1,41 +1,46 @@
-import { Link } from "react-router-dom";
-
-import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const Search = () => {
-  const searchRef = useRef();
+  const navigate = useNavigate();
 
-  const [searchParam, setSearchParam] = useState("");
+  const searchRef = useRef();
 
   function searchValid(searchInput) {
     if (searchInput.length <= 0) {
       searchRef.current.focus();
+      return false;
+    }
+    return true;
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault(searchValid(searchRef.current.value));
+
+    const isValid = searchValid(searchRef.current.value);
+    if (isValid) {
+      navigate(`/kanji/${searchRef.current.value}`);
     }
   }
 
   return (
-    <div className="relative flex">
+    <form onSubmit={handleSubmit} className="relative flex justify-center">
       <input
         ref={searchRef}
-        onChange={() => {
-          setSearchParam(`/kanji/${searchRef.current.value}`);
-        }}
-        className="w-[clamp(100%,-0.6154rem+61.5385vw,24rem)] bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white py-2 px-4 rounded-none rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
+        className="w-4/6 max-w-96 py-2 px-4 max-2xs:text-sm bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white rounded-none rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
         type="text"
         placeholder="Search Kanji"
       />
-      <Link
-        className="group bg-white bg-opacity-25 hover:bg-opacity-30 backdrop-blur-3xl text-white rounded-e-2xl px-5 font-medium flex items-center transition-all"
-        onClick={() => {
-          searchValid(searchRef.current.value);
-        }}
-        to={searchParam}
+      <button
+        type="submit"
+        className="group bg-white bg-opacity-25 hover:bg-opacity-30 backdrop-blur-3xl text-white rounded-e-2xl flex items-center transition-all"
       >
-        <div className="group-hover:scale-95 transition-transform max-sm:text-sm">
-          Search
+        <div className="group-hover:scale-95 transition-transform px-5 ">
+          <span className="max-sm:hidden">Search</span>
+          <img className="size-5 sm:hidden max-w-none" src="/search_icon.svg" />
         </div>
-      </Link>
-    </div>
+      </button>
+    </form>
   );
 };
 
