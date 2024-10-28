@@ -48,14 +48,14 @@ export default function KanjiSvg({ KANJI }) {
   const timeoutIdsRef = useRef([]); // Store timeout IDs here
 
   const playAnimation = useCallback(() => {
-    setIsAnimating(true);
     const SVG = SvgHolder.current?.querySelector("svg");
+    setIsAnimating(true);
     if (SVG) {
       const paths = SVG.querySelectorAll("path");
       const texts = SVG.querySelectorAll("text");
 
       paths.forEach((path, index) => {
-        path.style.transition = "none";
+        path.style.transition = "initial";
         texts[index].style.display = "none";
       });
       const strokeDuration = 0.4; // (Seconds)

@@ -37,7 +37,7 @@ export default function Options({
         }}
         className={`
           border border-transparent z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 
-          opacity-100 hover:bg-opacity-30
+          opacity-100 can-hover:hover:bg-opacity-30
           `}
       >
         {isAnimating ? (
@@ -57,7 +57,7 @@ export default function Options({
         }}
         className={`
           z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 
-          ${isAnimating ? "opacity-50 cursor-not-allowed" : "opacity-100 hover:bg-opacity-30"}
+          ${isAnimating ? "opacity-50 cursor-not-allowed" : "opacity-100 can-hover:hover:bg-opacity-30"}
           ${strokeOrderToggled ? "border border-white border-opacity-75" : "border border-transparent"}
           `}
       >

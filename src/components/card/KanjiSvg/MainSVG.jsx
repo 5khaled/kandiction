@@ -8,8 +8,8 @@ export default function MainSVG({
   cancelAnimation,
 }) {
   useEffect(() => {
-    // Cancel the previous animation (Cleaing up all setTimeouts from the previous animation)
-    // Then the new animation starts with conflicting with the previous one
+    // Cancel the previous animation (Cleaning up all setTimeouts from the previous animation)
+    // Then the new animation starts without conflicting with the previous one
     cancelAnimation();
     playAnimation();
   }, [playAnimation, cancelAnimation]);
