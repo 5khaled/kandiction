@@ -3,7 +3,7 @@ function About() {
     kanjivg: {
       title: "KanjiVg",
       link: "https://kanjivg.tagaini.net/",
-      text: "Provides stroke order data for Kanji characters. Released under the Creative Commons Attribution-Share Alike 3.0 licence.",
+      text: "Provides SVGs for Kanji characters. Released under the Creative Commons Attribution-Share Alike 3.0 licence.",
     },
     jlpt: {
       title: "JLPT Levels",
@@ -11,12 +11,12 @@ function About() {
       text: "Information on JLPT levels from Tanos.",
     },
     data: {
-      title: "Kanji Data",
+      title: "Kanji-Alive",
       link: "https://github.com/kanjialive/kanji-data-media",
-      text: "Sourced from Kanji alive. Licensed under Creative Commons Attribution 4.0.",
+      text: "Kanji data such as meanings, readings and other things. Licensed under Creative Commons Attribution 4.0.",
     },
     composition: {
-      title: "Kanji Composition",
+      title: "The-Kanji-Map",
       link: "https://github.com/gabor-kovacs/the-kanji-map",
       text: "Kanji Composition Data from The-Kanji-Map.",
     },
@@ -27,8 +27,9 @@ function About() {
       <section className="flex flex-col gap-3">
         <h2 className="text-white text-3xl font-bold">About</h2>
         <p className="text-white opacity-85 pl-1.5">
-          Kandiction is a resource for learning Kanji characters, offering
-          information on meanings, readings, stroke order, and JLPT levels
+          Kandiction is a quick-reference resource for Kanji characters,
+          offering information on meanings, readings, stroke order, and JLPT
+          levels.
         </p>
       </section>
       <section className="flex flex-col gap-3">
@@ -39,7 +40,7 @@ function About() {
         <ul className="flex flex-col gap-3 my-3 pl-1.5">
           {Object.values(Sources).map((source, index) => (
             <li className="group" key={index}>
-              <strong className="flex items-center text-white underline can-hover:opacity-85  can-hover:group-hover:opacity-100">
+              <strong className="flex items-center text-white underline can-hover:opacity-85 can-hover:hover:opacity-100">
                 <a href={source.link} target="_blank">
                   {source.title}
                 </a>
