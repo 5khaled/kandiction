@@ -18,6 +18,9 @@ export default {
       minHeight: {
         "outlet-dvh": "calc(100dvh - 60px)",
       },
+      fontSize: {
+        "2xs": "0.5rem",
+      },
       fontFamily: {
         mplus: ["Mplus1M", "sans-serif"],
         japaneseRadicals: ["JapaneseRadicals", "sans-serif"],

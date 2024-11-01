@@ -17,7 +17,7 @@ function KanjiTags({ tags }) {
         >
           <div className="font-medium">{Titles[key] || key}:&nbsp;</div>
           <div
-            className={`flex items-center ${value ?? `text-white text-opacity-50`} ${key == "radical" ? "font-japaneseRadicals" : ""}`}
+            className={`flex items-center ${value ?? `text-white text-opacity-50`} ${key == "radical" && value ? "font-japaneseRadicals" : ""}`}
           >
             {value || "N/A"}
           </div>

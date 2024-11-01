@@ -37,7 +37,7 @@ function Primitives({ primitives, kanji, type }) {
         {kanjis ? primitives?.length : "0"})
       </header>
       {kanjis && (
-        <section className="text-2xl max-sm:text-xl [&>*]:size-14 max-sm:[&>*]:size-12 scrollbar-hide gap-2 max-h-64 grid grid-cols-[repeat(4,auto)] content-start overflow-x-hidden pr-1 text-white">
+        <section className="text-2xl max-sm:text-xl font-medium [&>*]:size-14 max-sm:[&>*]:size-12 scrollbar-hide gap-2 max-h-64 grid grid-cols-[repeat(4,auto)] content-start overflow-x-hidden pr-1 text-white">
           {kanjis.map((p, i) => (
             <Link
               to={`/kanji/${p}`}
