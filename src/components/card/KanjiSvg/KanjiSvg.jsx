@@ -21,7 +21,9 @@ export default function KanjiSvg({ KANJI }) {
 
   const SVG_SOURCE = `https://kanji.vwh.sh/svg/${KANJI.codePointAt(0).toString(16).padStart(5, "0")}.svg`;
   useEffect(() => {
+    setIsError(false);
     setIsLoading(true);
+
     // Fetch the SVG file
     const fetchSvg = async () => {
       try {
