@@ -41,10 +41,14 @@ function About() {
           {Object.values(Sources).map((source, index) => (
             <li className="group" key={index}>
               <strong className="flex items-center text-white underline can-hover:opacity-85 can-hover:hover:opacity-100">
-                <a href={source.link} target="_blank">
+                <a className="flex" href={source.link} target="_blank">
                   {source.title}
+                  <img
+                    className="mx-1 size-5 pointer-events-none select-none"
+                    src="/external-link.svg"
+                    alt=""
+                  />
                 </a>
-                <img className="mx-1 size-5" src="/external-link.svg" alt="" />
               </strong>
               <p className="text-white text-opacity-85">{source.text}</p>
             </li>

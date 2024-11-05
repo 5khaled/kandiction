@@ -48,7 +48,7 @@ function RandomKanji() {
         } relative select-none self-center size-14 p-1.5 flex items-center justify-center rounded-xl border border-white bg-transparent backdrop-blur-lg`}
         disabled={loading}
       >
-        <img className="size-full" src="/dice.svg" />
+        <img className="size-full pointer-events-none" src="/dice.svg" />
       </button>
     </>
   );

@@ -5,7 +5,11 @@ function Header() {
   return (
     <header className="sticky top-0 z-20 bg-transparent w-full flex items-center gap-5 p-2 backdrop-blur shadow-sm">
       <Link className="flex items-center m-2 gap-2" to="/">
-        <img className="size-7" src="/kandiction_logo_white.svg" alt="" />
+        <img
+          className="size-7 pointer-events-none select-none"
+          src="/kandiction_logo_white.svg"
+          alt=""
+        />
         <h1 className="text-white text-xl font-bold">Kandiction</h1>
       </Link>
       <nav
@@ -29,7 +33,7 @@ function About() {
       to="/about"
     >
       <img
-        className={`size-6 max-w-none xs:hidden rounded-full ${isActive ? "outline" : ""} outline-white outline-1 outline-offset-2`}
+        className={`pointer-events-none select-none size-6 max-w-none xs:hidden rounded-full ${isActive ? "outline" : ""} outline-white outline-1 outline-offset-2`}
         src="/info_icon.svg"
         alt=""
       />
@@ -51,7 +55,7 @@ function Github() {
       href="https://github.com/5Khaled/Kandiction"
     >
       <img
-        className={`size-5 max-xs:size-6 max-w-none`}
+        className={`pointer-events-none select-none size-5 max-xs:size-6 max-w-none`}
         src="/github_icon.svg"
         alt=""
       />

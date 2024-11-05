@@ -24,7 +24,10 @@ const Search = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative flex justify-center">
+    <form
+      onSubmit={handleSubmit}
+      className="relative flex justify-center select-none"
+    >
       <input
         ref={searchRef}
         className="w-4/6 max-w-96 py-2 px-4 max-2xs:text-sm bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white rounded-none rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
@@ -37,7 +40,10 @@ const Search = () => {
       >
         <div className="group-hover:scale-95 transition-transform px-5 ">
           <span className="max-sm:hidden">Search</span>
-          <img className="size-5 sm:hidden max-w-none" src="/search_icon.svg" />
+          <img
+            className="size-5 sm:hidden max-w-none pointer-events-none"
+            src="/search_icon.svg"
+          />
         </div>
       </button>
     </form>

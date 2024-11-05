@@ -41,12 +41,16 @@ export default function Options({
           `}
       >
         {isAnimating ? (
-          <img src="/X_icon.svg" alt="Cancel" className={`size-4`} />
+          <img
+            src="/X_icon.svg"
+            alt="Cancel"
+            className={`size-4 pointer-events-none select-none`}
+          />
         ) : (
           <img
             src="/replay.svg"
             alt="Replay"
-            className={`${isAnimating ? "opacity-50" : ""} size-4`}
+            className={`size-4 pointer-events-none select-none ${isAnimating ? "opacity-50" : ""}`}
           />
         )}
       </button>
@@ -64,7 +68,7 @@ export default function Options({
         <img
           src="/order.svg"
           alt="Order"
-          className={`${isAnimating ? "opacity-50" : ""} size-4`}
+          className={`size-4 pointer-events-none select-none ${isAnimating ? "opacity-50" : ""}`}
         />
       </button>
     </div>
