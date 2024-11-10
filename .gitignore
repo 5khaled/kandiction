@@ -12,8 +12,6 @@ dist
 dist-ssr
 *.local
 
-src/CHarsSvgs
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -26,6 +24,4 @@ src/CHarsSvgs
 *.sw?
 
 # Data
-src/kanji_data
 src/components/KanjiBackground.jsx
-src/components/buttons
