@@ -42,8 +42,10 @@ function Primitives({ primitives, kanji, type }) {
             <Link
               to={`/kanji/${p}`}
               className={`group ${
-                p === kanji ? "bg-white" : "bg-black"
-              } flex cursor-pointer items-center justify-center rounded border border-transparent bg-opacity-35 can-hover:hover:border-white`}
+                p === kanji
+                  ? "bg-white bg-opacity-30 dark:bg-opacity-20 can-hover:hover:bg-opacity-40 dark:can-hover:hover:bg-opacity-30"
+                  : "bg-black bg-opacity-35 dark:bg-opacity-25"
+              } flex cursor-pointer items-center justify-center rounded border border-transparent can-hover:hover:border-white`}
               key={i}
             >
               <div className="can-hover:group-hover:scale-125 transition-transform">
@@ -54,7 +56,7 @@ function Primitives({ primitives, kanji, type }) {
           {showToggleButton && (
             <button
               onClick={handleToggle}
-              className="text-sm max-sm:text-xs flex cursor-pointer items-center justify-center rounded bg-white bg-opacity-30 hover:bg-opacity-35 active:scale-95 transition-transform"
+              className="text-sm max-sm:text-xs flex cursor-pointer items-center justify-center rounded bg-white bg-opacity-30 dark:bg-opacity-20 can-hover:hover:bg-opacity-40 dark:can-hover:hover:bg-opacity-30 active:scale-95 transition-transform"
             >
               <div className="py-1.5">
                 {toggled ? (

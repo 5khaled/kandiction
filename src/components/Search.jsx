@@ -30,13 +30,13 @@ const Search = () => {
     >
       <input
         ref={searchRef}
-        className="w-4/6 max-w-96 py-2 px-4 max-2xs:text-sm bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 caret-white rounded-none rounded-s-2xl border border-white border-opacity-40 focus:border-opacity-70 outline-none transition-colors"
+        className="w-4/6 max-w-96 py-2 px-4 max-2xs:text-sm bg-transparent backdrop-blur-lg text-white placeholder:text-white placeholder:text-opacity-40 dark:placeholder:text-opacity-20 caret-white rounded-none rounded-s-2xl border border-white border-opacity-40 dark:border-opacity-20 focus:border-opacity-70 dark:focus:border-opacity-35 outline-none"
         type="text"
         placeholder="Search Kanji"
       />
       <button
         type="submit"
-        className="group bg-white bg-opacity-25 hover:bg-opacity-30 backdrop-blur-3xl text-white rounded-e-2xl flex items-center transition-all"
+        className="dark:opacity-50 group bg-white bg-opacity-25 hover:bg-opacity-30 backdrop-blur-3xl text-white rounded-e-2xl flex items-center transition-transform"
       >
         <div className="group-hover:scale-95 transition-transform px-5 ">
           <span className="max-sm:hidden">Search</span>

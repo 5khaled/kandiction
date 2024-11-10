@@ -16,7 +16,7 @@ function Readings({ readings, type }) {
         <section className="flex flex-wrap gap-0.5">
           {readings.split("、").map((r, i) => (
             <div
-              className=" bg-black bg-opacity-15 can-hover:hover:bg-opacity-25 text-white max-sm:text-sm rounded-md py-1 px-3 max-sm:py-1 max-sm:px-2 transition-colors"
+              className=" bg-black bg-opacity-15 dark:bg-opacity-10 can-hover:hover:bg-opacity-25 dark:can-hover:hover:bg-opacity-20 text-white max-sm:text-sm rounded-md py-1 px-3 max-sm:py-1 max-sm:px-2 transition-colors"
               key={i}
             >
               {r}

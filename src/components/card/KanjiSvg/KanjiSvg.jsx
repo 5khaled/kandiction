@@ -128,7 +128,7 @@ export default function KanjiSvg({ KANJI }) {
   }, []);
 
   return (
-    <div className="group relative p-3 size-52 aspect-square max-sm:size-40 max-2xs:size-full shrink-0 rounded border-2 bg-black bg-opacity-35 flex items-center justify-center">
+    <div className="group relative p-3 size-52 aspect-square max-sm:size-40 max-2xs:size-full shrink-0 rounded border-2 bg-black bg-opacity-35 dark:bg-opacity-25 flex items-center justify-center">
       {isLoading && <Loader />}
       {isError && !isLoading && <NoSVG KANJI={KANJI} />}
       {!isLoading && !isError && (

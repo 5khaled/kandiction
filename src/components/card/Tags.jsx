@@ -9,7 +9,7 @@ function KanjiTags({ tags }) {
   };
 
   return (
-    <div className="flex flex-col basis-full justify-evenly bg-black bg-opacity-25 rounded px-2 [&>:not(:last-child)]:border-b">
+    <div className="flex flex-col basis-full justify-evenly bg-black bg-opacity-25 dark:bg-opacity-15 rounded px-2 [&>:not(:last-child)]:border-b">
       {Object.entries(tags).map(([key, value], index) => (
         <div
           key={index}

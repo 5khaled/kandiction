@@ -43,9 +43,9 @@ function RandomKanji() {
         onClick={handleClick}
         className={`${
           loading
-            ? "opacity-30 scale-90 cursor-not-allowed [&>img]:animate-spin"
-            : "opacity-40 can-hover:hover:opacity-70 active:scale-95 transition-all"
-        } relative select-none self-center size-14 p-1.5 flex items-center justify-center rounded-xl border border-white bg-transparent backdrop-blur-lg`}
+            ? "opacity-30 dark:opacity-15 scale-90 cursor-not-allowed [&>img]:animate-spin"
+            : "opacity-40 dark:opacity-20 can-hover:hover:opacity-70 dark:can-hover:hover:opacity-35 active:scale-95"
+        } transition-scale relative select-none self-center size-14 p-1.5 flex items-center justify-center rounded-xl border border-white bg-transparent backdrop-blur-lg`}
         disabled={loading}
       >
         <img className="size-full pointer-events-none" src="/dice.svg" />

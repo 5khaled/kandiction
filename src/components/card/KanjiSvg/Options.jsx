@@ -36,8 +36,8 @@ export default function Options({
           isAnimating ? cancelAnimation() : playAnimation();
         }}
         className={`
-          border border-transparent z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 
-          opacity-100 can-hover:hover:bg-opacity-30
+          border border-transparent z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 dark:bg-opacity-15
+          opacity-100 can-hover:hover:bg-opacity-30 dark:can-hover:hover:bg-opacity-20
           `}
       >
         {isAnimating ? (
@@ -60,8 +60,8 @@ export default function Options({
           !isAnimating ? showStrokeOrder() : "";
         }}
         className={`
-          z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 
-          ${isAnimating ? "opacity-50 cursor-not-allowed" : "opacity-100 can-hover:hover:bg-opacity-30"}
+          z-50 rounded bg-white p-2 text-white transition-transform bg-opacity-25 dark:bg-opacity-15
+          ${isAnimating ? "opacity-50 cursor-not-allowed" : "opacity-100 can-hover:hover:bg-opacity-30 dark:can-hover:hover:bg-opacity-20"}
           ${strokeOrderToggled ? "border border-white border-opacity-75" : "border border-transparent"}
           `}
       >

@@ -5,7 +5,7 @@ function KanjiMeanings({ Meanings }) {
       <header className="bg-white bg-opacity-100 px-10 py-2 font-bold text-black flex justify-center">
         Meanings
       </header>
-      <div className="flex flex-wrap items-center justify-center gap-0.5 bg-black bg-opacity-25 p-1">
+      <div className="flex flex-wrap items-center justify-center gap-0.5 bg-black bg-opacity-25 dark:bg-opacity-15 p-1">
         {Meanings &&
           [...Meanings.split(", ")].map((m, i) => (
             <div
