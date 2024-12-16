@@ -1,11 +1,15 @@
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import ThemeSwitch from "./buttons/ThemeSwitch";
 import { useEffect } from "react";
 
-function Header({ navOpen, setNavOpen }) {
+type HeaderProps = {
+  navOpen: boolean;
+  setNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function Header({ navOpen, setNavOpen }: HeaderProps) {
   useEffect(() => {
     const handleResize = () => {
       setNavOpen(false);
@@ -45,13 +49,25 @@ function Header({ navOpen, setNavOpen }) {
           className="group transition-all hidden max-md:flex flex-col gap-1 max-xl:p-3 items-end justify-center opacity-75 can-hover:group-hover:opacity-100"
         >
           <div
-            className={`h-0.5  ${navOpen ? "rotate-45 absolute w-5" : "w-5 can-hover:group-hover:w-4"} transition-all bg-white`}
+            className={`h-0.5  ${
+              navOpen
+                ? "rotate-45 absolute w-5"
+                : "w-5 can-hover:group-hover:w-4"
+            } transition-all bg-white`}
           />
           <div
-            className={`h-0.5  ${navOpen ? "-rotate-45 absolute w-5" : "w-3 can-hover:group-hover:w-5"} transition-all bg-white`}
+            className={`h-0.5  ${
+              navOpen
+                ? "-rotate-45 absolute w-5"
+                : "w-3 can-hover:group-hover:w-5"
+            } transition-all bg-white`}
           ></div>
           <div
-            className={`h-0.5  ${navOpen ? " -rotate-45 absolute w-5" : "w-4 can-hover:group-hover:w-3"} transition-all bg-white`}
+            className={`h-0.5  ${
+              navOpen
+                ? " -rotate-45 absolute w-5"
+                : "w-4 can-hover:group-hover:w-3"
+            } transition-all bg-white`}
           ></div>
         </button>
         <div
@@ -61,7 +77,7 @@ function Header({ navOpen, setNavOpen }) {
         >
           <div
             className="
-            grow flex justify-end gap-3 md:px-3
+            grow flex gap-3 md:px-3
             max-md:grow-0 max-md:flex-col
             max-md:[&>:not(.separator)]:text-xl
             max-md:[&>*]:border-b max-md:[&>*]:py-3
@@ -70,19 +86,19 @@ function Header({ navOpen, setNavOpen }) {
             <Section
               title="Hiragana & Katakana"
               path="/kana"
-              imgSrc="/info_icon.svg"
+              // imgSrc="/info_icon.svg"
               text="Kana"
               setNavOpen={setNavOpen}
             />
             <Section
               title="About page"
               path="/about"
-              imgSrc="/info_icon.svg"
+              // imgSrc="/info_icon.svg"
               text="About"
               setNavOpen={setNavOpen}
             />
           </div>
-          <Separator extra="max-xl:hidden" />
+          {/* <Separator extra="max-xl:hidden" /> */}
           <section
             className="group relative flex xl:px-3 max-md:py-10
           "
@@ -93,7 +109,7 @@ function Header({ navOpen, setNavOpen }) {
               <div className="w-1 h-1 bg-white rounded-full"></div>
             </button>
             <div
-              className="flex max-xl:hidden max-xl:group-hover:flex max-xl:flex-col xl:gap-3
+              className="flex flex-row-reverse max-xl:hidden max-xl:group-hover:flex max-xl:flex-col xl:gap-3
           max-xl:absolute max-xl:top-full max-xl:right-1 max-xl:rounded-md
           max-xl:border border-white border-opacity-50 max-xl:bg-black max-xl:bg-opacity-35 max-xl:dark:bg-opacity-50
           max-md:basis-full max-md:bg-transparent
@@ -133,12 +149,13 @@ function Header({ navOpen, setNavOpen }) {
   );
 }
 export default Header;
-Header.propTypes = {
-  navOpen: PropTypes.bool,
-  setNavOpen: PropTypes.func,
+
+type SeparatorProps = {
+  type?: string;
+  extra: string;
 };
 
-function Separator({ type, extra = "" }) {
+function Separator({ type, extra = "" }: SeparatorProps) {
   let separatorType = type ? type : "vertical";
   switch (separatorType) {
     case "horizontal":
@@ -148,17 +165,20 @@ function Separator({ type, extra = "" }) {
       separatorType = "w-px h-1/2 relative top-1/2 -translate-y-1/2";
       break;
   }
-  let separatorStyle = `${separatorType} ${extra}`;
+  const separatorStyle = `${separatorType} ${extra}`;
   return (
     <span className={`separator ${separatorStyle} bg-white bg-opacity-50`} />
   );
 }
-Separator.propTypes = {
-  type: PropTypes.string,
-  extra: PropTypes.string,
+
+type SectionProps = {
+  title: string;
+  path: string;
+  text: string;
+  setNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function Section({ title, path, text, setNavOpen }) {
+function Section({ title, path, text, setNavOpen }: SectionProps) {
   const location = useLocation();
   const isActive = location.pathname === path;
   return (
@@ -166,26 +186,32 @@ function Section({ title, path, text, setNavOpen }) {
       onClick={() => {
         setNavOpen(false);
       }}
-      className={`group flex items-center gap-2 transition-all ${isActive ? "opacity-100 max-md:bg-white max-md:bg-opacity-15 max-md:rounded-sm max-md:items-center max-md:pl-3 max-md:border-none" : "opacity-75 can-hover:hover:opacity-100 transition-opacity"}`}
+      className={`group flex items-center gap-2 transition-all ${
+        isActive
+          ? "opacity-100"
+          : "opacity-75 can-hover:hover:opacity-100 transition-opacity"
+      }`}
       title={title}
       to={path}
     >
       <span
-        className={`text-white leading-none transition-transform ${isActive ? "md:underline" : "max-md:can-hover:group-hover:translate-x-1"}`}
+        className={`text-white leading-none transition-transform ${
+          isActive ? "md:underline" : ""
+        } max-md:can-hover:group-hover:translate-x-1`}
       >
         {text}
       </span>
     </Link>
   );
 }
-Section.propTypes = {
-  title: PropTypes.string,
-  path: PropTypes.string,
-  text: PropTypes.string,
-  setNavOpen: PropTypes.func,
+
+type SocialProps = {
+  title: string;
+  link: string;
+  imgSrc: string;
 };
 
-function Social({ title, link, imgSrc }) {
+function Social({ title, link, imgSrc }: SocialProps) {
   return (
     <a
       className="flex items-center gap-2 opacity-65 can-hover:hover:opacity-85 transition-opacity"
@@ -200,8 +226,3 @@ function Social({ title, link, imgSrc }) {
     </a>
   );
 }
-Social.propTypes = {
-  title: PropTypes.string,
-  link: PropTypes.string,
-  imgSrc: PropTypes.string,
-};

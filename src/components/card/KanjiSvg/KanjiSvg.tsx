@@ -1,25 +1,26 @@
-import PropTypes from "prop-types";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import MainSVG from "./MainSVG.jsx";
-import PlaceHolderSVG from "./PlaceHolderSVG.jsx";
-import Options from "./Options.jsx";
+import MainSVG from "./MainSVG";
+import PlaceHolderSVG from "./PlaceHolderSVG.tsx";
+import Options from "./Options.tsx";
 
-import Loader from "../../../assets/QuantumLoader.jsx";
+import Loader from "../../../assets/QuantumLoader";
 
-export default function KanjiSvg({ KANJI }) {
+export default function KanjiSvg({ KANJI }: { KANJI: string | undefined }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const SvgHolder = useRef();
+  const SvgHolder = useRef<HTMLDivElement | null>(null);
 
-  const [svgContent, setSvgContent] = useState(null);
+  const [svgContent, setSvgContent] = useState<string | null>(null);
 
   const [strokeOrderToggled, setStrokeOrderToggled] = useState(false);
   const manualToggleRef = useRef(false); // Tracks manual toggle state
   const [isAnimating, setIsAnimating] = useState(false);
+  const SVG_SOURCE = `https://kanji.vwh.sh/svg/${KANJI?.codePointAt(0)
+    ?.toString(16)
+    .padStart(5, "0")}.svg`;
 
-  const SVG_SOURCE = `https://kanji.vwh.sh/svg/${KANJI.codePointAt(0).toString(16).padStart(5, "0")}.svg`;
   useEffect(() => {
     setIsError(false);
     setIsLoading(true);
@@ -47,7 +48,7 @@ export default function KanjiSvg({ KANJI }) {
     fetchSvg();
   }, [SVG_SOURCE]);
 
-  const timeoutIdsRef = useRef([]); // Store timeout IDs here
+  const timeoutIdsRef = useRef<number[]>([]); // Store timeout IDs here
 
   const playAnimation = useCallback(() => {
     const SVG = SvgHolder.current?.querySelector("svg");
@@ -65,66 +66,64 @@ export default function KanjiSvg({ KANJI }) {
 
       // Animate each stroke
       paths.forEach((path, index) => {
-        path.style.strokeDashoffset = path.getTotalLength();
-        path.style.strokeDasharray = path.getTotalLength();
+        path.style.strokeDashoffset = `${path.getTotalLength()}`;
+        path.style.strokeDasharray = `${path.getTotalLength()}`;
         const timeoutId = setTimeout(() => {
-          path.style.transition = `stroke-dashoffset ${strokeDuration}s ease ${index * strokeDuration}s`;
-          path.style.strokeDashoffset = 0;
+          path.style.transition = `stroke-dashoffset ${strokeDuration}s ease ${
+            index * strokeDuration
+          }s`;
+          path.style.strokeDashoffset = `${0}`;
         }, animationDelay);
         timeoutIdsRef.current.push(timeoutId); // Store timeout ID
       });
 
       // Show Stroke order number while each stroke is being animated
       texts.forEach((text, index) => {
-        const timeoutId = setTimeout(
-          () => {
-            text.style.display = "block";
-          },
-          animationDelay + strokeDuration * animationDelay * index,
-        );
+        const timeoutId = setTimeout(() => {
+          text.style.display = "block";
+        }, animationDelay + strokeDuration * animationDelay * index);
         timeoutIdsRef.current.push(timeoutId); // Store timeout ID
       });
 
       // Hide Stroke order numbers after animation finishes
-      const endAnimationTimeoutId = setTimeout(
-        () => {
-          if (!manualToggleRef.current) {
-            texts.forEach((text) => {
-              text.style.display = "none";
-            });
-          }
-          setIsAnimating(false);
-        },
-        animationDelay + strokeDuration * animationDelay * paths.length,
-      );
+      const endAnimationTimeoutId = setTimeout(() => {
+        if (!manualToggleRef.current) {
+          texts.forEach((text) => {
+            text.style.display = "none";
+          });
+        }
+        setIsAnimating(false);
+      }, animationDelay + strokeDuration * animationDelay * paths.length);
       timeoutIdsRef.current.push(endAnimationTimeoutId); // Store final timeout ID
     }
   }, []);
 
   const cancelAnimation = useCallback(() => {
     const SVG = SvgHolder.current?.querySelector("svg");
-    const paths = SVG.querySelectorAll("path");
-    const texts = SVG.querySelectorAll("text");
+    if (SVG) {
+      const paths = SVG.querySelectorAll("path");
+      const texts = SVG.querySelectorAll("text");
 
-    paths.forEach((path) => {
-      path.style.transition = "none";
-      path.style.strokeDashoffset = 0;
-    });
+      paths.forEach((path) => {
+        path.style.transition = "none";
+        path.style.strokeDashoffset = `${0}`;
+      });
 
-    if (manualToggleRef.current) {
-      texts.forEach((text) => {
-        text.style.display = "block";
-      });
-    } else {
-      texts.forEach((text) => {
-        text.style.display = "none";
-      });
+      if (manualToggleRef.current) {
+        texts.forEach((text) => {
+          text.style.display = "block";
+        });
+      } else {
+        texts.forEach((text) => {
+          text.style.display = "none";
+        });
+      }
+
+      // Clear all timeouts
+      timeoutIdsRef.current.forEach((id) => clearTimeout(id));
+      timeoutIdsRef.current = []; // Reset timeout IDs array
+      setIsAnimating(false);
     }
-
-    // Clear all timeouts
-    timeoutIdsRef.current.forEach((id) => clearTimeout(id));
-    timeoutIdsRef.current = []; // Reset timeout IDs array
-    setIsAnimating(false);
   }, []);
 
   return (
@@ -156,12 +155,8 @@ export default function KanjiSvg({ KANJI }) {
     </div>
   );
 }
-KanjiSvg.propTypes = {
-  svgSource: PropTypes.string,
-  KANJI: PropTypes.string,
-};
 
-function NoSVG({ KANJI }) {
+function NoSVG({ KANJI }: { KANJI: string | undefined }) {
   return (
     <figure className="[container-type:inline-size] size-full flex flex-col justify-around items-center">
       <span className="text-[40cqi] leading-none text-white">{KANJI}</span>
@@ -171,6 +166,3 @@ function NoSVG({ KANJI }) {
     </figure>
   );
 }
-NoSVG.propTypes = {
-  KANJI: PropTypes.string,
-};

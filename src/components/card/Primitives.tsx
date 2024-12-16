@@ -1,28 +1,40 @@
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./styles/Primitives.css";
 
-function Primitives({ primitives, kanji, type }) {
+type PrimitivesProps = {
+  primitives: string[] | undefined;
+  kanji: string | undefined;
+  type: string;
+};
+
+function Primitives({ primitives, kanji, type }: PrimitivesProps) {
   const [showToggleButton, setShowToggleButton] = useState(false);
   const [toggled, setToggled] = useState(false);
-  const [kanjis, setKanjis] = useState(null);
+  const [kanjis, setKanjis] = useState<string[]>();
 
   useEffect(() => {
     if (primitives) {
       setToggled(false);
-      primitives.length > 0
-        ? setKanjis(primitives.slice(0, 7))
-        : setKanjis([kanji]);
-      primitives.length > 8
-        ? setShowToggleButton(true)
-        : setShowToggleButton(false);
+      if (primitives.length > 0) {
+        setKanjis(primitives.slice(0, 7));
+      } else {
+        if (kanji) {
+          setKanjis([kanji]);
+        }
+      }
+
+      if (primitives.length > 8) {
+        setShowToggleButton(true);
+      } else {
+        setShowToggleButton(false);
+      }
     }
   }, [primitives, kanji]);
   function handleToggle() {
     if (toggled) {
-      setKanjis(primitives.slice(0, 7));
+      setKanjis(primitives?.slice(0, 7));
       setToggled(false);
     } else {
       setKanjis(primitives);
@@ -53,7 +65,7 @@ function Primitives({ primitives, kanji, type }) {
               </div>
             </Link>
           ))}
-          {showToggleButton && (
+          {showToggleButton && primitives && (
             <button
               onClick={handleToggle}
               className="text-sm max-sm:text-xs flex cursor-pointer items-center justify-center rounded bg-white bg-opacity-30 dark:bg-opacity-20 can-hover:hover:bg-opacity-40 dark:can-hover:hover:bg-opacity-30 active:scale-95 transition-transform"
@@ -79,10 +91,5 @@ function Primitives({ primitives, kanji, type }) {
     </main>
   );
 }
-Primitives.propTypes = {
-  primitives: PropTypes.array,
-  kanji: PropTypes.string,
-  type: PropTypes.string,
-};
 
 export default Primitives;

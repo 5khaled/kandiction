@@ -1,7 +1,11 @@
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-function Readings({ readings, type }) {
+type ReadingsProps = {
+  readings: string | undefined;
+  type: "kun" | "on";
+};
+
+function Readings({ readings, type }: ReadingsProps) {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -34,8 +38,3 @@ function Readings({ readings, type }) {
 }
 
 export default Readings;
-
-Readings.propTypes = {
-  readings: PropTypes.string,
-  type: PropTypes.string,
-};

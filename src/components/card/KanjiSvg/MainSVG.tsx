@@ -1,18 +1,26 @@
-import PropTypes from "prop-types";
+import { MutableRefObject } from "react";
 import { useEffect } from "react";
+
+type MainSVGProps = {
+  svgContent: string | null;
+  SvgHolder: MutableRefObject<HTMLDivElement | null>;
+  playAnimation: () => void;
+  cancelAnimation: () => void;
+};
 
 export default function MainSVG({
   svgContent,
   SvgHolder,
   playAnimation,
   cancelAnimation,
-}) {
+}: MainSVGProps) {
   useEffect(() => {
     // Cancel the previous animation (Cleaning up all setTimeouts from the previous animation)
     // Then the new animation starts without conflicting with the previous one
     cancelAnimation();
     playAnimation();
   }, [playAnimation, cancelAnimation]);
+  // }, [playAnimation, cancelAnimation]);
   return (
     svgContent && (
       <div
@@ -25,9 +33,9 @@ export default function MainSVG({
     )
   );
 }
-MainSVG.propTypes = {
-  svgContent: PropTypes.string,
-  SvgHolder: PropTypes.object,
-  playAnimation: PropTypes.func,
-  cancelAnimation: PropTypes.func,
-};
+// MainSVG.propTypes = {
+//   svgContent: PropTypes.string,
+//   SvgHolder: PropTypes.object,
+//   playAnimation: PropTypes.func,
+//   cancelAnimation: PropTypes.func,
+// };

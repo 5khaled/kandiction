@@ -19,7 +19,7 @@ export default function ThemeSwitch() {
   });
 
   const [theme, setTheme] = useState(
-    localStorage.theme ? localStorage.theme : systemTheme,
+    localStorage.theme ? localStorage.theme : systemTheme
   );
 
   function changeTheme() {

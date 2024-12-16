@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-function KanjiMeanings({ Meanings }) {
+function KanjiMeanings({ Meanings }: { Meanings: string | undefined }) {
   return (
     <div className="flex flex-col overflow-hidden rounded text-white max-sm:text-sm">
       <header className="bg-white bg-opacity-100 px-10 py-2 font-bold text-black flex justify-center">
@@ -22,8 +21,5 @@ function KanjiMeanings({ Meanings }) {
     </div>
   );
 }
-KanjiMeanings.propTypes = {
-  Meanings: PropTypes.string,
-};
 
 export default KanjiMeanings;

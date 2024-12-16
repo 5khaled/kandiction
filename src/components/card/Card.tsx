@@ -2,17 +2,32 @@ import { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
-import KanjiSvg from "./KanjiSvg/KanjiSvg";
-import Primitives from "./Primitives";
-import KanjiMeanings from "./Meanings";
+import KanjiSvg from "./KanjiSvg/KanjiSvg.tsx";
+import Primitives from "./Primitives.tsx";
+import KanjiMeanings from "./Meanings.tsx";
 import Tags from "./Tags";
-import Readings from "./Readings";
+import Readings from "./Readings.tsx";
+// import Examples from "./Examples.tsx";
 
 const KanjiCard = () => {
   const { id } = useParams();
 
-  const [kanjiData, setKanjiData] = useState(null);
-  const KANJI = id[0];
+  type kanjiDataType = {
+    kanji: string | undefined;
+    jlpt: string | undefined;
+    kgrade: string | undefined;
+    kstroke: number | undefined;
+    radical: string | undefined;
+    kmeaning: string | undefined;
+    onyomi_ja: string | undefined;
+    kunyomi_ja: string | undefined;
+    in: string[];
+    out: string[];
+    examples: string | undefined;
+  };
+
+  const [kanjiData, setKanjiData] = useState<kanjiDataType>();
+  const KANJI: string | undefined = id ? id[0] : undefined;
 
   useEffect(() => {
     async function handleFetch() {
@@ -21,6 +36,7 @@ const KanjiCard = () => {
 
         if (response.ok) {
           const data = await response.json();
+          // console.log(data);
           setKanjiData({ ...data });
         }
       } catch (error) {
@@ -66,6 +82,7 @@ const KanjiCard = () => {
                   type="in"
                 />
               </div>
+              {/* <Examples examples={kanjiData?.examples} /> */}
             </main>
           </section>
         </main>

@@ -12,7 +12,9 @@ function App() {
     >
       <Header navOpen={navOpen} setNavOpen={setNavOpen} />
       <main
-        className={`min-h-outlet-dvh ${navOpen ? "hidden" : "flex"} flex-col z-10`}
+        className={`min-h-outlet-dvh ${
+          navOpen ? "hidden" : "flex"
+        } flex-col z-10`}
       >
         <Outlet />
       </main>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
           window.history.replaceState(
             null,
             null,
-            l.pathname.slice(0, -1) + decoded + l.hash,
+            l.pathname.slice(0, -1) + decoded + l.hash
           );
         }
       })(window.location);
@@ -71,7 +71,9 @@
   </head>
   <body class="bg-teal-700 dark:bg-gray-900">
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx" defer></script>
+    <!-- import this BEFORE any scripts -->
+    <!-- <script src="https://unpkg.com/react-scan/dist/auto.global.js"></script> -->
+    <script type="module" src="/src/main.tsx" defer></script>
     <noscript>
       <div class="no-js">
         <h1>JavaScript Required</h1>

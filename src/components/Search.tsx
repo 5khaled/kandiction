@@ -1,25 +1,27 @@
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 
 const Search = () => {
   const navigate = useNavigate();
 
-  const searchRef = useRef();
+  const searchRef = useRef<HTMLInputElement>(null);
 
-  function searchValid(searchInput) {
+  function searchValid(searchInput: string) {
     if (searchInput.length <= 0) {
-      searchRef.current.focus();
+      searchRef.current?.focus();
       return false;
     }
     return true;
   }
 
-  function handleSubmit(event) {
-    event.preventDefault(searchValid(searchRef.current.value));
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
 
-    const isValid = searchValid(searchRef.current.value);
-    if (isValid) {
-      navigate(`/kanji/${searchRef.current.value}`);
+    if (searchRef.current) {
+      const isValid = searchValid(searchRef.current.value);
+      if (isValid) {
+        navigate(`/kanji/${searchRef.current.value}`);
+      }
     }
   }
 

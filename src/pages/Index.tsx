@@ -1,4 +1,4 @@
-import Search from "./components/Search";
+import Search from "../components/Search";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -32,7 +32,7 @@ function RandomKanji() {
         navigate(`/kanji/${kanji}`);
       }
     } catch (err) {
-      console.error("Failed to load a Random Kanji");
+      console.error("Failed to load a Random Kanji", err);
       setLoading(false);
     }
   };
