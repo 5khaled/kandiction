@@ -57,7 +57,7 @@ const KanjiCard = () => {
                 jlpt: kanjiData?.jlpt,
                 grade: kanjiData?.kgrade,
                 strokes: kanjiData?.kstroke,
-                radical: kanjiData?.radical,
+                radical: kanjiData?.radical
               }}
             />
           </section>

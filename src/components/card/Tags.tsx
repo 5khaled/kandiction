@@ -10,7 +10,7 @@ function KanjiTags({ tags }: { tags: TagsProps }) {
     jlpt: "JLPT",
     grade: "Grade",
     strokes: "Strokes",
-    radical: "Radical",
+    radical: "Radical"
   };
 
   return (

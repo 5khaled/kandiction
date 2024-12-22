@@ -12,7 +12,7 @@ export default function MainSVG({
   svgContent,
   SvgHolder,
   playAnimation,
-  cancelAnimation,
+  cancelAnimation
 }: MainSVGProps) {
   useEffect(() => {
     // Cancel the previous animation (Cleaning up all setTimeouts from the previous animation)

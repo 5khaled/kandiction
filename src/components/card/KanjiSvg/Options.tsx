@@ -17,7 +17,7 @@ export default function Options({
   SvgHolder,
   strokeOrderToggled,
   setStrokeOrderToggled,
-  manualToggleRef,
+  manualToggleRef
 }: OptionsProps) {
   function showStrokeOrder() {
     const SVG = SvgHolder.current?.querySelector("svg");

@@ -79,21 +79,27 @@ export default function KanjiSvg({ KANJI }: { KANJI: string | undefined }) {
 
       // Show Stroke order number while each stroke is being animated
       texts.forEach((text, index) => {
-        const timeoutId = setTimeout(() => {
-          text.style.display = "block";
-        }, animationDelay + strokeDuration * animationDelay * index);
+        const timeoutId = setTimeout(
+          () => {
+            text.style.display = "block";
+          },
+          animationDelay + strokeDuration * animationDelay * index
+        );
         timeoutIdsRef.current.push(timeoutId); // Store timeout ID
       });
 
       // Hide Stroke order numbers after animation finishes
-      const endAnimationTimeoutId = setTimeout(() => {
-        if (!manualToggleRef.current) {
-          texts.forEach((text) => {
-            text.style.display = "none";
-          });
-        }
-        setIsAnimating(false);
-      }, animationDelay + strokeDuration * animationDelay * paths.length);
+      const endAnimationTimeoutId = setTimeout(
+        () => {
+          if (!manualToggleRef.current) {
+            texts.forEach((text) => {
+              text.style.display = "none";
+            });
+          }
+          setIsAnimating(false);
+        },
+        animationDelay + strokeDuration * animationDelay * paths.length
+      );
       timeoutIdsRef.current.push(endAnimationTimeoutId); // Store final timeout ID
     }
   }, []);

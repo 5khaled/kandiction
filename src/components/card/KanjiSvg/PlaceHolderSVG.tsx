@@ -1,5 +1,5 @@
 export default function PlaceHolderSVG({
-  svgContent,
+  svgContent
 }: {
   svgContent: string | null;
 }) {

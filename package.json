@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "format:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "react": "^18.3.1",

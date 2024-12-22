@@ -3,23 +3,23 @@ function About() {
     kanjivg: {
       title: "KanjiVg",
       link: "https://kanjivg.tagaini.net/",
-      text: "Provides SVGs for Kanji characters. Released under the Creative Commons Attribution-Share Alike 3.0 licence.",
+      text: "Provides SVGs for Kanji characters. Released under the Creative Commons Attribution-Share Alike 3.0 licence."
     },
     jlpt: {
       title: "JLPT Levels",
       link: "https://www.tanos.co.uk/jlpt/",
-      text: "Information on JLPT levels from Tanos.",
+      text: "Information on JLPT levels from Tanos."
     },
     data: {
       title: "Kanji-Alive",
       link: "https://github.com/kanjialive/kanji-data-media",
-      text: "Kanji data such as meanings, readings and other things. Licensed under Creative Commons Attribution 4.0.",
+      text: "Kanji data such as meanings, readings and other things. Licensed under Creative Commons Attribution 4.0."
     },
     composition: {
       title: "The-Kanji-Map",
       link: "https://github.com/gabor-kovacs/the-kanji-map",
-      text: "Kanji Composition Data from The-Kanji-Map.",
-    },
+      text: "Kanji Composition Data from The-Kanji-Map."
+    }
   };
 
   return (
