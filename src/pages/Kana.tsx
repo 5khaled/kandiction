@@ -26,7 +26,7 @@ export default function KanaPage() {
         </section>
         <section
           className=" min-h-outlet-dvh self-start flex items-center justify-center grow sticky top-[60px]
-                    max-md:hidden md:mr-6 md:pt-6 max-lg:items-start"
+                    max-md:hidden md:mr-6 md:pt-6 max-xl:items-start"
         >
           <SvgPlayer style="compact" canvasSize={"flexible"} />
         </section>
