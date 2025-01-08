@@ -21,7 +21,7 @@ function Header({ navOpen, setNavOpen }: HeaderProps) {
   }, [setNavOpen]);
 
   return (
-    <header className="sticky top-0 z-20 bg-transparent w-full flex gap-2 p-2 md:backdrop-blur shadow-sm dark:shadow-[#ffffff0d]">
+    <header className="sticky top-0 z-20 bg-transparent w-full flex gap-2 p-2 backdrop-blur shadow-sm dark:shadow-[#ffffff0d]">
       <Link
         onClick={() => {
           setNavOpen(false);
