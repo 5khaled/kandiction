@@ -5,7 +5,7 @@ const config = {
   singleQuote: false,
   jsxSingleQuote: false,
   semi: true,
-  trailingComma: "none",
+  trailingComma: "all",
   tabWidth: 2,
 };
 
