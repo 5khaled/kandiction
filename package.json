@@ -13,6 +13,9 @@
     "format:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.8",
     "ldrs": "^1.0.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.474.0",
