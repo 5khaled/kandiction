@@ -4,11 +4,11 @@ import { create } from "zustand";
 interface SVGAnimationStore {
   isAnimating: boolean;
   strokesOrderVisible: boolean;
-  timeoutIDs: number[];
+  timeoutIDs: NodeJS.Timeout[];
 
   setIsAnimating: (state: boolean) => void;
   setStrokesOrderVisible: (state: boolean) => void;
-  addTimeoutId: (id: number) => void;
+  addTimeoutId: (id: NodeJS.Timeout) => void;
   clearTimeouts: () => void;
 }
 
