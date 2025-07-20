@@ -1,27 +1,48 @@
-// import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
-// import { MutableRefObject } from "react";
+import { useSVGRefStore } from "@stores/SVGPlayerStore";
 
-// interface SvgDisplayerProps {
-//   // size: number | "flexible";
-//   SvgDisplayerRef: MutableRefObject<HTMLDivElement | null>;
-// }
+import { useSVGAnimation } from "@hooks/animation/useSVGAnimation";
+import { useSVGFetch } from "@hooks/general/useSVGFetch";
 
-export function SvgDisplayer() {
-  // const [canvasSize, setCanvasSize] = useState<CSSProperties>({});
+import { quantum } from "ldrs";
 
-  // useEffect(() => {
-  //   if (size !== "flexible") {
-  //     setCanvasSize({ width: `${size * 4}px`, height: `${size * 4}px` });
-  //   }
-  // }, [size]);
+quantum.register();
+
+export default function SvgDisplayer({ guideLines }: { guideLines?: boolean }) {
+  const CHARACTER = "雨";
+  const SVG_SOURCE = `https://kanji.vwh.sh/svg/${CHARACTER.codePointAt(0)?.toString(16).padStart(5, "0")}.svg`;
+
+  const { svgContent, isLoading, isError } = useSVGFetch(SVG_SOURCE);
+
+  const { playAnimation } = useSVGAnimation();
+
+  const SvgHolder = useRef<HTMLDivElement>(null);
+  const { svgRef } = useSVGRefStore();
+  useEffect(() => {
+    if (svgContent) {
+      svgRef.current = SvgHolder.current;
+      playAnimation(svgRef.current);
+    }
+  }, [svgRef, playAnimation, svgContent]);
+
   return (
-    <main
-      // ref={SvgDisplayerRef}
-      // style={canvasSize}
-      className={`grow aspect-square relative z-0 bg-black bg-opacity-15 flex items-center justify-center`}
-    >
-      <GuideLinesSvg />
+    <main className={`size-full relative z-0 flex items-center justify-center`}>
+      {isLoading && <l-quantum color={"white"} speed={2} size={50} />}
+      {isError && !isLoading && <NoSVG Char={CHARACTER} />}
+      {svgContent && !isLoading && !isError && (
+        <>
+          <div
+            ref={SvgHolder}
+            dangerouslySetInnerHTML={{ __html: svgContent }}
+            className={`
+              absolute size-full select-none color-scheme-light z-10 scale-90 
+              [&>svg]:size-full [&_path]:stroke-white [&_text]:fill-white [&_text]:text-2xs
+              `}
+          />
+        </>
+      )}
+      {guideLines && !isLoading && <GuideLinesSvg />}
     </main>
   );
 }
@@ -29,9 +50,8 @@ export function SvgDisplayer() {
 function GuideLinesSvg() {
   return (
     <svg
-      className="absolute w-full h-full opacity-25 scale-75 -z-50"
+      className="absolute top-0 left-0 size-full h-full opacity-25 scale-75 -z-50"
       viewBox="0 0 100 100"
-      xmlns="http://www.w3.org/2000/svg"
       stroke="white"
     >
       <line
@@ -39,7 +59,7 @@ function GuideLinesSvg() {
         y1="50"
         x2="100"
         y2="50"
-        strokeWidth="1"
+        strokeWidth="0.5"
         strokeDasharray="10,5"
       />
       <line
@@ -47,9 +67,20 @@ function GuideLinesSvg() {
         y1="0"
         x2="50"
         y2="100"
-        strokeWidth="1"
+        strokeWidth="0.5"
         strokeDasharray="10,5"
       />
     </svg>
+  );
+}
+
+function NoSVG({ Char }: { Char: string }) {
+  return (
+    <figure className="[container-type:inline-size] size-full flex flex-col justify-around items-center">
+      <span className="text-[30cqi] leading-none text-white">({Char})</span>
+      <div className="text-white text-opacity-50 text-[8cqi]">
+        No SVG available!
+      </div>
+    </figure>
   );
 }
