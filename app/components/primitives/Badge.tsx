@@ -5,7 +5,7 @@ const badgeVariants = cva(`flex items-center rounded text-nowrap`, {
   variants: {
     variant: {
       default: "bg-border text-secondary-foreground",
-      primary: "bg-primary",
+      primary: "bg-primary text-foreground",
       outline:
         "bg-input text-secondary-foreground outline outline-border -outline-offset-1",
     },
