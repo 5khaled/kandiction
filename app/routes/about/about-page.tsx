@@ -1,9 +1,8 @@
-import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import type { Route } from "./+types/about-page";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Kandiction" },
+    { title: "About | Kandiction" },
     {
       name: "description",
       content: `Kandiction is a quick-reference resource for Kanji characters.`,
@@ -11,6 +10,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <Welcome />;
+export default function About() {
+  return <main>About Page</main>;
 }
