@@ -30,8 +30,8 @@ export default function MainLayout() {
       </header>
       <main
         className={cn(
-          `container h-screen flex flex-col items-center justify-center mx-auto pt-24 sm:pt-16 px-8 space-y-8`,
-          "h-dvh"
+          `container h-screen flex flex-col items-center sm:justify-center mx-auto max-sm:mt-24 px-8 space-y-8`,
+          "h-svh"
         )}
       >
         <header className="flex flex-col items-center">
@@ -63,13 +63,13 @@ export default function MainLayout() {
       </main>
       <section
         className={cn(
-          `container flex flex-col items-center space-y-8 mx-auto px-8 my-16`
+          `container flex flex-col items-center space-y-8 mx-auto px-8 mb-32`
         )}
       >
         <h1 className="text-2xl md:text-4xl font-medium">
           What is Kandiction?
         </h1>
-        <p className="text-center text-secondary-foreground max-w-[75ch]">
+        <p className="text-center text-pretty text-secondary-foreground max-w-[75ch]">
           Kandiction is a fast and concise reference guide for Japanese Kanji
           characters. Look up stroke order, meanings, readings, and more. Future
           updates will introduce full Vocabulary, sentences, and expanded
