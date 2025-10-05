@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center text-sm text-secondary-foreground whitespace-nowrap rounded-[calc(var(--radius)-1px)] disabled:pointer-events-none disabled:text-disabled disabled:shadow-none [&_svg]:fill-current/15 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 cursor-pointer active:*:scale-95",
+  "inline-flex items-center justify-center text-sm text-secondary-foreground whitespace-nowrap rounded-[calc(var(--radius)-1px)] disabled:pointer-events-none disabled:text-disabled disabled:shadow-none [&_svg]:fill-current/15 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 cursor-pointer active:*:scale-95 focus-visible:z-50 focus-visible:outline-1 outline-current -outline-offset-1 dark:-outline-offset-2",
   {
     variants: {
       variant: {
@@ -14,7 +14,7 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground border dark:border-ring dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-border)] dark:active:shadow-none",
         destructive:
-          "text-destructive bg-card border dark:border-ring dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-foreground)]/10 dark:active:shadow-none",
+          "text-destructive bg-card border dark:border-ring dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-border)] dark:active:shadow-none",
         outline: "border hover:bg-card/50",
         ghost: "",
         link: "text-primary underline-offset-4 hover:underline",
