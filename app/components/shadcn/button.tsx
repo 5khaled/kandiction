@@ -10,20 +10,20 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-card dark:bg-card text-primary ring ring-border dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-border)] dark:active:shadow-none",
+          "bg-card dark:bg-card text-primary border dark:border-ring dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-border)] dark:active:shadow-none",
         secondary:
-          "bg-secondary text-secondary-foreground ring ring-border dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-border)] dark:active:shadow-none",
+          "bg-secondary text-secondary-foreground border dark:border-ring dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-border)] dark:active:shadow-none",
         destructive:
-          "text-destructive bg-card ring ring-border dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-foreground)]/10 dark:active:shadow-none",
+          "text-destructive bg-card border dark:border-ring dark:ring-ring shadow-[inset_0px_2px_0px_0px_#fff] active:shadow-[inset_0px_2px_0px_0px_var(--color-disabled)] dark:shadow-[inset_0px_0px_0px_1px_var(--color-foreground)]/10 dark:active:shadow-none",
         outline: "border hover:bg-card/50",
         ghost: "",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        icon: "size-8.5 [&_svg:not([class*='size-'])]:size-4.5",
+        icon: "size-9 [&_svg:not([class*='size-'])]:size-4.5",
         sm: "text-xs h-6.5 gap-1 px-3.5 has-[svg]:px-2.5 [&_svg:not([class*='size-'])]:size-3.5",
         default:
-          "text-sm h-8 gap-1.5 px-4 has-[svg]:px-3 [&_svg:not([class*='size-'])]:size-4.5",
+          "text-sm h-9 gap-1.5 px-4 has-[svg]:px-3 [&_svg:not([class*='size-'])]:size-4.5",
         lg: "text-base h-9 gap-2.5 px-5 has-[svg]:px-3.5 [&_svg:not([class*='size-'])]:size-5",
       },
     },
