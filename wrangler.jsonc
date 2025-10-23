@@ -3,4 +3,11 @@
   "name": "kandiction",
   "compatibility_date": "2025-04-04",
   "main": "./workers/app.ts",
+  "r2_buckets": [
+    {
+      "binding": "SVG_BUCKET",
+      "bucket_name": "kandiction-svgs",
+      "remote": true,
+    },
+  ],
 }
