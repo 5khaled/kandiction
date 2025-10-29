@@ -31,7 +31,7 @@ export default function MainLayout() {
       <main
         className={cn(
           `container h-screen flex flex-col items-center sm:justify-center mx-auto max-sm:mt-24 px-8 space-y-8`,
-          "h-svh"
+          "h-svh",
         )}
       >
         <header className="flex flex-col items-center">
@@ -49,7 +49,7 @@ export default function MainLayout() {
           <div className="relative">
             <img
               className="hidden sm:block w-full max-w-[1090px]"
-              src="images/kandiction-home_page-dark.png"
+              src="images/kandiction-kanji_page_(dark).png"
               alt=""
             />
             <img
@@ -57,13 +57,13 @@ export default function MainLayout() {
               src="images/kandiction-home_page-dark_mobile.png"
               alt=""
             />
-            <span className="absolute w-full h-5/12 bottom-0 bg-gradient-to-t from-25% from-background to-transparent"></span>
+            <span className="absolute w-full h-5/12 bottom-0 bg-linear-to-t from-25% from-background to-transparent"></span>
           </div>
         </section>
       </main>
       <section
         className={cn(
-          `container flex flex-col items-center space-y-8 mx-auto px-8 mb-32`
+          `container flex flex-col items-center space-y-8 mx-auto px-8 mb-32`,
         )}
       >
         <h1 className="text-2xl md:text-4xl font-medium">
