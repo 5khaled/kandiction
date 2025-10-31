@@ -2,7 +2,7 @@ import type { Route } from "./+types/main-layout";
 import { Outlet } from "react-router";
 
 import { SidebarProvider, SidebarTrigger } from "~/components/shadcn/sidebar";
-import AppSidebar from "./components/app-sidebar";
+import AppSidebar from "./components/AppSidebar";
 
 export function meta({}: Route.MetaArgs) {
   return [

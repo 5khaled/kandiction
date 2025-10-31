@@ -91,7 +91,7 @@ export default function AppSidebar() {
   const activeItem = useMemo(() => {
     const allItems = [...mainItems, ...footerItems];
     const match = allItems.find(
-      (i) => location.pathname === `/${i.url.replace(/^\//, "")}`
+      (i) => location.pathname === `/${i.url.replace(/^\//, "")}`,
     );
     return match?.title;
   }, [location]);
@@ -173,7 +173,7 @@ function MenuItem({ item, isActive }: { item: MenuItem; isActive: boolean }) {
             ],
         isActive
           ? "bg-card"
-          : "focus-visible:bg-card/25 focus-visible:ring-1 ring-disabled"
+          : "focus-visible:bg-card/25 focus-visible:ring-1 ring-disabled",
       )}
       onClick={(e) => {
         if (item.disabled) e.preventDefault();
