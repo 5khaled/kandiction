@@ -98,7 +98,7 @@ export default function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b">
+      <SidebarHeader className="border-b bg-card">
         <SidebarMenu>
           <SidebarMenuItem className="p-3">
             <div className="isolate overflow-hidden flex justify-between">
@@ -116,13 +116,13 @@ export default function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="bg-background gap-6 p-2 overflow-x-hidden">
+      <SidebarContent className="gap-6 overflow-x-hidden">
         <SidebarGroup className="pt-0">
-          <div className="sticky top-0 group-data-[collapsible=icon]:-mt-[calc(var(--spacing)*12.75)] group-data-[collapsible=icon]:opacity-0 transition-all">
-            <SearchBar />
-            <SidebarSeparator className="my-2" />
+          <div className="sticky top-0 p-2 group-data-[collapsible=icon]:-mt-12.75 group-data-[collapsible=icon]:opacity-0 transition-all">
+            <SearchBar className="bg-background" />
           </div>
-          <SidebarGroupContent>
+          <SidebarSeparator />
+          <SidebarGroupContent className="p-2 pb-0!">
             <SidebarMenu className="gap-1">
               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
@@ -133,12 +133,12 @@ export default function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup className="px-2">
-          <SidebarGroupLabel className="">Recents</SidebarGroupLabel>
+          <SidebarGroupLabel className="h-auto">Recents</SidebarGroupLabel>
           <SidebarGroupContent className=""></SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-2 bg-background">
+      <SidebarFooter className="p-2">
         <SidebarMenu className="gap-1">
           {footerItems.map((item) => (
             <SidebarMenuItem key={item.title}>
