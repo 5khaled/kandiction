@@ -5,7 +5,10 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { cn } from "~/lib/utils";
 import Badge from "~/components/primitives/Badge";
 
-export default function SearchBar() {
+export default function SearchBar({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -18,7 +21,7 @@ export default function SearchBar() {
         inputRef.current?.focus();
       }
     },
-    { preventDefault: true, enableOnFormTags: true }
+    { preventDefault: true, enableOnFormTags: true },
   );
   useHotkeys(
     "esc",
@@ -27,15 +30,17 @@ export default function SearchBar() {
         inputRef.current?.blur();
       }
     },
-    { preventDefault: true, enableOnFormTags: true }
+    { preventDefault: true, enableOnFormTags: true },
   );
 
   return (
     <div
       className={cn(
         `relative overflow-hidden flex border bg-input focus-within:outline outline-foreground/15 -outline-offset-1 rounded`,
-        searchTerm ? "" : "flex-row-reverse"
+        searchTerm ? "" : "flex-row-reverse",
+        className,
       )}
+      {...props}
     >
       <input
         ref={inputRef}
@@ -43,16 +48,16 @@ export default function SearchBar() {
         placeholder="Search"
         className={cn(
           `peer text-sm grow py-1.5 placeholder:text-disabled rounded-l outline-0`,
-          searchTerm ? "pl-2" : "pl-1.5"
+          searchTerm ? "pl-2" : "pl-1.5",
         )}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       {!searchTerm && (
         <span className="peer-focus:opacity-0 flex gap-1 absolute right-0 mr-1.5 top-1/2 -translate-y-1/2 pointer-events-none">
-          <Badge variant={"outline"} size={"default"}>
+          <Badge variant={"default"} size={"default"} className="">
             CTRL
           </Badge>
-          <Badge variant={"outline"} size={"default"}>
+          <Badge variant={"default"} size={"default"} className="">
             K
           </Badge>
         </span>
@@ -66,7 +71,7 @@ export default function SearchBar() {
                 "px-1.5 cursor-pointer text-muted-foreground",
                 "focus-visible:*:first:scale-105 focus-visible:active:*:first:scale-95 focus-visible:text-primary hover:text-primary",
               ]
-            : "pl-1.5 text-disabled"
+            : "pl-1.5 text-disabled",
         )}
       >
         <Search
@@ -74,7 +79,7 @@ export default function SearchBar() {
             `size-4`,
             searchTerm
               ? "fill-current/25 group-hover/button:scale-105 group-active/button:scale-95"
-              : ""
+              : "",
           )}
         />
       </button>
