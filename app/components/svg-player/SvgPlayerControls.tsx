@@ -3,8 +3,8 @@ import {
   Pause,
   Play,
   StepForward,
-  ArrowRight,
-  ArrowLeft,
+  SkipForward,
+  SkipBack,
 } from "lucide-react";
 import ButtonsGroup from "../primitives/ButtonsGroup";
 import { Button } from "../shadcn/button";
@@ -97,7 +97,7 @@ export default function SvgPlayerControls() {
           Seek(container!, 0);
         }}
       >
-        <ArrowLeft />
+        <SkipBack />
       </Button>
       <Button
         variant={"secondary"}
@@ -146,7 +146,7 @@ export default function SvgPlayerControls() {
           Seek(container!, totalUnits);
         }}
       >
-        <ArrowRight />
+        <SkipForward />
       </Button>
     </ButtonsGroup>
   );
