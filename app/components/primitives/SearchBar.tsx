@@ -54,10 +54,10 @@ export default function SearchBar({
       />
       {!searchTerm && (
         <span className="peer-focus:opacity-0 flex gap-1 absolute right-0 mr-1.5 top-1/2 -translate-y-1/2 pointer-events-none">
-          <Badge variant={"default"} size={"default"} className="">
+          <Badge variant={"kbd"} size={"default"}>
             CTRL
           </Badge>
-          <Badge variant={"default"} size={"default"} className="">
+          <Badge variant={"kbd"} size={"default"}>
             K
           </Badge>
         </span>
