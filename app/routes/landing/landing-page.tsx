@@ -58,12 +58,12 @@ export default function MainLayout() {
             What is Kandiction?
           </h1>
           <p className="text-center text-pretty text-secondary-foreground max-w-[75ch]">
-            Kandiction is a kanji reference I’m building to make looking up
-            characters simple and actually useful. You can check meanings,
-            readings, stroke order, and see how each kanji is built from its
-            parts. I’m also working on features like profiles, personal
-            libraries, and a small community section to share and discuss kanji.
-            Still early — more will come as it grows.
+            Kandiction is a kanji reference made to make exploring characters
+            simple and actually useful. You can check meanings, readings, stroke
+            order, and see how each kanji connects through its parts. Profiles,
+            personal libraries, and a small community for sharing kanji insights
+            are also in the works. It’s still in development, but growing step
+            by step.
           </p>
         </section>
 
