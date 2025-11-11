@@ -57,7 +57,7 @@ export default function MainLayout() {
               src="images/kandiction-home_page-dark_mobile.png"
               alt=""
             />
-            <span className="absolute w-full h-5/12 bottom-0 bg-linear-to-t from-25% from-background to-transparent"></span>
+            <span className="absolute w-full h-5/12 bottom-0 bg-linear-to-t from-10% sm:from-15% from-background to-transparent"></span>
           </div>
         </section>
       </main>
