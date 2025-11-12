@@ -174,3 +174,37 @@
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
 }
+
+@layer utilities {
+  .scrollbar {
+    --scroll-thumb: color-mix(
+      in srgb,
+      var(--color-foreground) 25%,
+      transparent
+    );
+    --scroll-thumb-hover: color-mix(
+      in srgb,
+      var(--color-foreground) 35%,
+      transparent
+    );
+    --scroll-thumb-active: color-mix(
+      in srgb,
+      var(--color-foreground) 65%,
+      transparent
+    );
+
+    @apply [&::-webkit-scrollbar]:w-0.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full;
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scroll-thumb);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--scroll-thumb-hover);
+    }
+
+    &::-webkit-scrollbar-thumb:active {
+      background-color: var(--scroll-thumb-active);
+    }
+  }
+}
