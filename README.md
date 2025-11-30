@@ -1,1 +1,5 @@
-Kandiction rebuild in React Router V7
+# Kandiction rebuild (In development!)
+
+## Kanji Page:
+
+![Kandiction Kanji Page](/public/images/kanji_page.png)
