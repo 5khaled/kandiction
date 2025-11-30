@@ -8,7 +8,7 @@ import Badge from "~/components/primitives/Badge";
 export default function SearchBar({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLFormElement>) {
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -34,7 +34,7 @@ export default function SearchBar({
   );
 
   return (
-    <div
+    <form
       className={cn(
         `relative overflow-hidden flex border bg-input focus-within:outline outline-foreground/15 -outline-offset-1 rounded`,
         searchTerm ? "" : "flex-row-reverse",
@@ -42,6 +42,11 @@ export default function SearchBar({
       )}
       {...props}
     >
+      <input
+        type="text"
+        readOnly
+        className="size-0 absolute top-0 left-0 pointer-events-none opacity-0"
+      />
       <input
         ref={inputRef}
         type="text"
@@ -83,6 +88,6 @@ export default function SearchBar({
           )}
         />
       </button>
-    </div>
+    </form>
   );
 }
