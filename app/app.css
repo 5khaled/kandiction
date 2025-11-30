@@ -130,8 +130,10 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --color-disabled: var(--disabled);
+  --breakpoint-2xs: 20rem;
+  --breakpoint-xs: 25rem;
 
+  --color-disabled: var(--disabled);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
