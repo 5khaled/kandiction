@@ -19,6 +19,7 @@
     "clsx": "^2.1.1",
     "isbot": "^5.1.27",
     "lucide-react": "^0.525.0",
+    "ordinal": "^1.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hotkeys-hook": "^5.1.0",
