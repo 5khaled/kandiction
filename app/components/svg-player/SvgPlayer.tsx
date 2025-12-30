@@ -128,14 +128,6 @@ export function SvgCanvas({
   );
 }
 
-interface CanvasGuideLinesInterface extends React.SVGProps<SVGSVGElement> {
-  dash?: number;
-  gap?: number;
-  centerGap?: number;
-  strokeWidth?: number;
-  className?: string;
-}
-
 export function CanvasGuideLines({
   dash = 4,
   gap = 4,
@@ -143,7 +135,12 @@ export function CanvasGuideLines({
   strokeWidth = 1,
   className,
   ...svgProps
-}: CanvasGuideLinesInterface) {
+}: React.SVGProps<SVGSVGElement> & {
+  dash?: number;
+  gap?: number;
+  centerGap?: number;
+  strokeWidth?: number;
+}) {
   const half = 50;
   const dashArray = `${dash} ${gap}`;
 
